@@ -1,0 +1,5 @@
+,PC1,PC2,group,condition,name
+SAMPLE_ID_S1_count.txt,-63.48462659,-8.531486075,GroupA,GroupA,SAMPLE_ID_S1_count.txt
+SAMPLE_ID_S3_count.txt,63.2121713,-2.889130315,GroupA,GroupA,SAMPLE_ID_S3_count.txt
+SAMPLE_ID_S2_count.txt,-64.36691319,8.505100871,GroupB,GroupB,SAMPLE_ID_S2_count.txt
+SAMPLE_ID_S4_count.txt,64.63936848,2.91551552,GroupB,GroupB,SAMPLE_ID_S4_count.txt

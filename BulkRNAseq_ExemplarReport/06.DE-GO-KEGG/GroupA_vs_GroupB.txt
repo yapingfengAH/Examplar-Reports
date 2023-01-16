@@ -1,0 +1,6 @@
+sample	file	condition
+SAMPLE_IS_S1	SAMPLE_IS_S1_count.txt	GroupA
+SAMPLE_IS_S3	SAMPLE_IS_S3_count.txt	GroupA
+SAMPLE_ID_S2	SAMPLE_IS_S2_count.txt	GroupB
+SAMPLE_IS_S4	SAMPLE_IS_S4_count.txt	GroupB
+

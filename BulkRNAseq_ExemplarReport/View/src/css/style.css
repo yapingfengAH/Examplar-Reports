@@ -1,0 +1,17 @@
+p.paragraph {text-indent: 2em; line-height: 1.5}
+p.center {text-align:center}
+p.left{text-align:left}
+p.right{text-align:right}
+.imgsize {height:400px; width:400px}
+.imgoverlap{height:500px;width:600px}
+.diffimg{
+  margin-left: 10px; 
+  font-size: 20px; 
+  }
+ .imgexp{
+	 height:750px;width:750px
+ }
+ p.font{font-size:18px}
+ .linespacing{padding-bottom: 20px;}
+.title{font-size:60px; text-align:center; color:#05296b}
+.imgMA{height:350px;width:350px}

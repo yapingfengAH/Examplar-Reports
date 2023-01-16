@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="src/css/font-awesome.min.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" href="src/css/style.css" type="text/css" media="screen"/>
+  <script src="src/js/jquery.min.js" type="text/javascript"></script>
+  <script src="src/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="src/js/report.js" type="text/javascript"></script>
+  
+ <style>
+html {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+body {
+  font-family: "Lato", Calibri;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 310px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #346d9e;
+  overflow-x: hidden;
+  padding-top: 230px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  color: #f5f5f5;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 330px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 20px;
+}
+
+
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: #1393cc;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #346d9e;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  display:inline-block;
+  padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+</head>
+<title>RNA-Seq Report</title><!--Sidebar section starts here-->
+  <div class="sidenav">
+	<a href="#home">1 Home</a>
+	<a href="#Backgound" class="dropdown-btn" >2 Background 
+		<i class="fa fa-caret-down"></i>
+		</a>
+		<div class="dropdown-container">
+			<a href="#Experimental-Process">2.1 Experimental Process</a>
+			<a href="#Bioinformatics-Process">2.2 Bioinformatics Process</a>			
+		</div>
+		<a href="#RawQC" class="dropdown-btn" >3 Raw Data and Quality Control 
+		<i class="fa fa-caret-down"></i>
+		</a>
+		<div class="dropdown-container">
+			<a href="#RawData">3.1 Raw Data Files</a>
+			<a href="#FastQC">3.2 Quality Control</a>
+		</div>
+	<a href="#BAM-Files">4 Mapping Files</a>
+	<a href="#rnaMetrics">5 RNA Metrics </a>
+	<a href="#FPKM">6 FPKM</a>
+	<a href="#Feature-Count" class="dropdown-btn">7 Feature Count</a>
+	
+	<a href="#Diff" class="dropdown-btn">8 Differential Analysis 
+		<i class="fa fa-caret-down"></i>
+		</a>
+		<div class="dropdown-container">
+				<a href="#Comparison1">8.1 GroupA_vs_GroupB</a>
+		</div>
+	<a href="#FunctionalAnalysis" class="dropdown-btn">9 Functional Analysis 
+		<i class="fa fa-caret-down"></i>
+		</a>
+		<div class="dropdown-container">
+			<a href="#GO_1">9.1 GroupA_vs_GroupB GO Analysis</a>
+		</div>
+	<a href="#Custom">10 Customized Analysis</a>	
+	<a href="#References">11 References</a>
+  </div>
+<!--Sidebar section ends here-->
+
+
+	<!--Introduction section starts here-->
+	<div id ="home" class="main">
+		<div><img src="Images/admera_health_final_logo.jpg" alt="Admera-Health"></div>
+		<p class="title"><b>RNA-Seq Report</b></p>
+		<h2><b> Project ID : XXXXX-XX </b></h2>
+		<h2><b> Species : Human </b></h2>
+		<h2><b> Platform : Illumina </b></h2>
+		<p>We have employed our RNA-Seq Analysis Pipeline, assembled after rigorous validation of best components of various computational tools for transcriptome assembly and differential expression analysis of the RNA-Seq data, extended by our in-house computational methods.</p>
+	</div> 
+
+<!--Introduction section ends here-->
+
+
+	<div id ="Backgound" class="main">
+		<h2>2 Background</h2>
+	</div>
+<!--Experimental Process section starts here-->		
+	<div id ="Experimental-Process" class="main">
+		<h2>2.1 Experimental Process</h2>
+			<p> Please find below the figures explaining the experimental process of RNA-Seq. RNA-Seq experimental process can be done using one of the following three options.</p>
+			<h4> 2.1.1. RNASeq - Poly-A technique </h4>
+			<p> The Poly-A selection method requires high quality RNA (RIN >7) which is suitable for studying gene expression. Note that non-coding RNA will not be included in this method. To understand the process, please refer to the picture below.</p>
+			<p class="center"><img src="Images/Experimental-Process_PolyA.jpg" alt="Experimental-Process_PolyA"></p>
+			<h4> 2.1.2. RNASeq --rRNA depletion Standard Input</h4>
+			<p> This method is mainly used for low quality RNA (RIN values < 7). Non-coding RNA is commonly found in data for this method. NEBNext and TruSeq kits can be used for this method. To know more on the method, please look at the picture below.</p>
+			<p class="center"><img src="Images/Experimental-Process_rRNAStd.jpg" alt="Experimental-Process_rRNAStd"></p>
+			<h4> 2.1.3. RNASeq --rRNA depletion Low Input</h4>
+			<p> The Takara Bio kit will be used for this method. RNA input ( ~10 pg ) is very low.  Both Poly-A and rRNA depletion can be applied in this kit. To understand the process, please refer to the picture below.</p>
+			<p class="center"><img src="Images/Experimental-Process_rRNALow.jpg" alt="Experimental-Process_rRNALow"></p>
+	</div>
+<!--Experimental Process section ends here-->
+
+<!--Bioinformatics Process section starts here-->
+	<div id ="Bioinformatics-Process" class="main">
+	<h2>2.2 Bioinformatics Process</h2>
+			<p>The picture below shows the bioinformatics pipeline used in the analysis of RNA-Seq data. FastQC (version v0.11.8) was applied to check the quality of raw reads. Trimmomatic (version v0.38) was applied to cut adaptors and trim low-quality bases with default setting. STAR Aligner version 2.7.1a was used to align the reads. Picard tools (version 2.20.4) was applied to mark duplicates of mapping. The StringTie version 2.0.4 was used to assemble the RNA-Seq alignments into potential transcripts. The featureCounts (version 1.6.0)/HTSeq was used to count mapped reads for genomic features such as genes, exons, promoter, gene bodies, genomic bins and chromosomal locations. The De-Seq2 (version 1.14.1) was used to do the differential analysis. The Gene Ontology Analysis was done using ClusterProfiler package in R. For more information on ClusterProfiler package, please refer to reference 7 in the References section.</p>
+		<p class="center"><img src="Images/Bioinformatics-Process.jpg" alt="Bioinformatics-Process"></p>
+	</div>
+
+<!--Bioinformatics Process section ends here-->
+
+<!--Raw Data section starts here-->
+	<div id="RawQC" class="main">
+	<h2>3 Raw Data and Quality Control</h2>
+	<p> This section shows the location of the Raw fastq files and the fastqc reports.</p>
+	</div>
+
+	<div id ="RawData" class="main">
+	
+	<h3>3.1 RNA-Seq Raw Data Files</h3>
+		<p>The Fastq files from the sequencer downloaded for further analysis.
+			<br></br>
+		Click on the button below to find the Raw Data files for each of the samples.</p>
+		<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('00.RawData','popup','width=800,height=700');return false;">Raw Data Files</button>
+		<p></p>
+		<p></p>
+	</div>
+
+<!--Raw Data section ends here-->
+<!--FastQC section starts here-->
+
+  <div id="FastQC" class="main">
+		<h2>3.2 Quality Control</h2>
+			<p class="font">  A FastQC report is generated to spot errors that originate either in the sequencer or in the library. The report has various modules and an html report is generated at the end of the analysis. It shows a quick summary of the modules run and a quick evaluation of whether the results are normal (green tick), slightly abnormal (orange triangle) or very unusual (red cross). For more details about each module, please refer to the manual provided by Babraham bioinformatics.
+			For more details about each module, please refer to the <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="popup"  onclick="window.open('https://www.bioinformatics.babraham.ac.uk/projects/fastqc/','popup','width=1000,height=800'); return false;">manual</a> provided by Babraham bioinformatics.</p>
+			
+			<p class ="font">Select from the dropdown menu for FastQC Reports of each sample.</p>  
+	<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Select Sample
+		<span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li class="dropdown-submenu">
+			
+						<li><a tabindex="-1" href="01.FastqQualityCheck/SAMPLE_ID_S1_R1_001_fastqc.html" target="popup" type="button" onClick= "window.open('01.FastqQualityCheck/SAMPLE_ID_S1_R1_001_fastqc.html','popup','width=800,height=700');refresh();return false;"> SAMPLE_ID_S1 </a></li>			
+						<li><a tabindex="-1" href="01.FastqQualityCheck/SAMPLE_ID_S2_R1_001_fastqc.html" target="popup" type="button" onClick= "window.open('01.FastqQualityCheck/SAMPLE_ID_S2_R1_001_fastqc.html','popup','width=800,height=700');refresh();return false;"> SAMPLE_ID_S2 </a></li>			
+						<li><a tabindex="-1" href="01.FastqQualityCheck/SAMPLE_ID_S3_R1_001_fastqc.html" target="popup" type="button" onClick= "window.open('01.FastqQualityCheck/SAMPLE_ID_S3_R1_001_fastqc.html','popup','width=800,height=700');refresh();return false;"> SAMPLE_ID_S3 </a></li>			
+						<li><a tabindex="-1" href="01.FastqQualityCheck/SAMPLE_ID_S4_R1_001_fastqc.html" target="popup" type="button" onClick= "window.open('01.FastqQualityCheck/SAMPLE_ID_S4_R1_001_fastqc.html','popup','width=800,height=700');refresh();return false;"> SAMPLE_ID_S4 </a></li>
+			</ul>
+	</div>
+	
+	<p class="linespacing"></p>
+			<p class="font"> MultiQC helps to provide aggregate results from bioinformatics analyses of many samples into a single report. MultiQC v1.8 was used. For further information on this, please check the <a href="https://academic.oup.com/bioinformatics/article/32/19/3047/2196507" target="popup"  onclick="window.open('https://academic.oup.com/bioinformatics/article/32/19/3047/2196507','popup','width=1000,height=800'); return false;">MultiQC</a> website.</p>    
+				<button class="btn btn-default dropdown-toggle" type="button" target="popup" type="button" onClick= "window.open('01.FastqQualityCheck/multiqc_report.html','popup','width=800,height=700');return false;"> MultiQCReport </button>
+  </div>
+
+<!--FastQC section ends here--><!--BAM files section starts here-->
+
+	<div id ="BAM-Files" class="main">
+		<h2>4 Mapping Files</h2>
+			<p> The fastq files were mapped using STAR Aligner version 2.7.1a. To know more about STAR aligner, please refer to Reference 1 below.</p>
+			<p>Click on the button below to open the BAM files.</p>
+			<button class="btn btn-default dropdown-toggle" type="button" target="popup" type="button" onClick= "window.open('02.BamFiles','popup','width=800,height=700');return false;">BAM Files</button>
+			<p></p>
+			<p></p>
+	</div>
+
+<!--BAM files section starts here--><!--rnaMetrics section starts here--> 
+
+	<div id="rnaMetrics" class="main">
+		<h2>5 RNA Metrics</h2>
+		<p>Picard (version 2.20.4) was used to collect metrics on the distribution of the bases within the transcripts. This tool calculates the total numbers and the fractions of nucleotides within specific genomic regions including untranslated regions (UTRs), introns, intergenic sequences (between discrete genes), and peptide-coding sequences (exons). This tool also determines the numbers of bases that pass quality filters specific to Illumina data (PF_BASES). </p> &nbsp;
+		
+		<p class="font"> MultiQC helps to provide aggregate results from bioinformatics analyses of many samples into a single report. MultiQC v1.8 was used. For further information on this, please check the <a href="https://academic.oup.com/bioinformatics/article/32/19/3047/2196507" target="popup"  onclick="window.open('https://academic.oup.com/bioinformatics/article/32/19/3047/2196507','popup','width=1000,height=800'); return false;">MultiQC</a> website.</p>    
+		<button class="btn btn-default dropdown-toggle" type="button" target="popup" type="button" onClick= "window.open('03.rnaMetrics/multiqc_report.html','popup','width=800,height=700');return false;"> RNA Metrics MultiQCReport </button>
+ 		<br></br>
+		<p> To view the folder with RNA Metrics results, Please click the button below.</p>
+		<button class="btn btn-default dropdown-toggle" type="button" target="popup" type="button" onClick= "window.open('03.rnaMetrics','popup','width=800,height=700');return false;"> RNA Metrics  </button>
+
+ </div>
+
+ <!--rnaMetrics section ends here--><!--FPKM  section starts here-->
+
+ <div id="FPKM" class="main">
+	<h2>6 FPKM</h2>
+		<p>FPKM stands for Fragments Per Kilobase of transcript per Million mapped reads. It is a normalised estimation of gene expression based on the RNA-seq data. FPKM are calculated from the number of reads that mapped to each particular gene sequence taking into account the gene length and the sequencing depth. In this project, StringTie version 2.0.4 was used to calculate FPKM values. StringTie used a network flow algorithm and an optional de novo assembly to assemble complex data sets into transcripts. To know more about StringTie, please refer to Reference 2 below in the References section. </p>                                        
+		
+	
+			<p> To view the folder with FPKM results, Please click the button below.</p>
+			<button class="btn btn-default dropdown-toggle" type="button" target="popup" type="button" onClick= "window.open('04.FPKM','popup','width=800,height=700');return false;"> FPKM  </button>
+	</div>
+	
+	<!--FPKM section ends here--> <!--Feature Counts section starts here-->
+
+	<div id="Feature-Count" class="main">
+		<h2>7 Feature Count</h2>
+		<p>FeatureCounts is a highly efficient general-purpose read summarization program that counts mapped reads for genomic features such as genes, exons, promoter, gene bodies, genomic bins and chromosomal locations. It can be used to count both RNA-seq and genomic DNA-seq reads. This project used FeatureCounts(version 1.6.0).To know more about FeatureCounts software, please refer to reference 5 in the References section. </p> 
+		
+
+			
+		<p> To view the folder with Feature Counts results, Please click the button below.</p>
+		<button class="btn btn-default dropdown-toggle" type="button" target="popup" type="button" onClick= "window.open('05.FC_count','popup','width=800,height=700');return false;"> Feature Counts  </button>
+	</div>
+	
+	<!--Feature Counts section ends here--><!--DE Analysis section starts here-->
+	<div class="main">
+		<div id="Diff">
+			<h2>8 Differential Analysis</h2>
+			<p> The differential analysis can be divided into two parts, namely</p>
+			<p> 1. Data exploration and QA on gene expression </p>
+			<p> 2. Quantification of differential expression and exploratory analysis</p>
+			<p> Part 1 includes Sample distribution, p-value distribution, Sample-to-Sample distance heatmaps and Principle component analysis. Part 2 includes MA-plot and Volcano Plot.</p>
+			<h3> Part 1 - Data exploration and QA on gene expression  </h3>
+			<p> The Differential Analysis was done using De-Seq2(version 1.14.1) Software. To know more on De-Seq2, please refer to reference 4 in the References section.</p>
+			<h4> 1. Between Sample Distribution</h4>
+			<p> Using normalized expression count, we visualized the between-sample distribution to contrast the distribution of gene-level expression on different samples. </p>
+			<h4> 2. P-value Distribution</h4>
+			<p> Here we provide the histogram of p-values. A histogram of p-values is a bar graph of the number or proportion of p-values that fall within certain non-overlapping sub-intervals of [0, 1]. This simple graphic assessment can indicate when problems are present in the analysis. The most desirable shape for the p- value histogram is one in which the p-values are most dense near zero and become less dense as the p- values increase. This shape does not indicate any problem of the methods operating on p-values and suggests that several genes are differentially expressed, though they may not be statistically significant after adjusting for multiple testing. </p>
+			<h4> 3. Sample-to-Sample distance heatmap </h4>
+			<p> A sample-to-sample distance heatmap reveals which samples are more closely related in terms of their gene expression profile. The rows and columns are arranged based on hierarchical clustering, so that samples with similar expression profile is positioned near to each other. The color of each show the level of similarity between samples. Usually, samples from the same condition tend to be clustered together because of their expression profile similarity.</p>
+			<h4> 4. Principle Component Analysis</h4>
+			<p> Principle component analysis (PCA) is used to visualize covariates and batch effects. As a dimension reduction technique, PCA can determine the key features of high-dimensional datasets and, in the context of RNA-Seq analysis, clusters samples by groups of the most significantly dysregulated genes. The clustering is performed first on the most significant group, then progressively on the less significant group.
+			PCA is performed on genes with highest row variance. The PCA plot on the first component (clustering on the most significant group) should have a clear separation between groups. Alternatively, if samples from the same batch are clustered together, it is a sign for possible batch effect if samples are grouped based on their batch.</p>
+			<h3> Part 2 - Quantification of differential expression and exploratory analysis </h3>
+			<h4> 1. MA-Plot </h4>
+			<p> To better interpret differentially expressed genes, we generated a MA-plot to obtain an overview of two sample group comparison. MA Plot is a two-dimensional scatter plot to visualize datasets. An MA-plot is a plot of log-fold change (M-values, i.e. the log of the ratio of level counts for each gene between two samples) against the log-average (A-values, i.e. the average level counts for each gene across the two samples). The MA-plot is a useful to visualize reproducibility between samples of an experiment. From a MA-plot one can see if normalization is needed.</p>
+			<h4> 2. Volcano Plot</h4>
+			<p> Additionally, we generated a volcano plot summarizing both fold-change and a measure of statistical significance from a statistical test. It is a scatter-plot of the negative log10-transformed p-values from the gene-specific test (on the y-axis) against the log2 fold change (on the x-axis). The datapoint with low p-values (highly significant) and highly dysregulated appearing towards either upper left or upper right of the plot.</p>
+			<h4> The figures of all the above analysis is presented below for each of the groups.</h4>
+		</div>
+	<div id="Comparison1">
+			<h3>8.1 GroupA_vs_GroupB</h3>
+				<p> Comparison of Samples was performed. The result files are available in 06.DE-GO-KEGG/GroupA_vs_GroupB_DE folder.</p>
+				<p> The significant genes, upregulated and downregulated genes can be viewed by clicking the respective buttons below.</p>
+				<div class="row">
+					<div class="column">
+				<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('View/output-GroupA_vs_GroupB_DE-AnalysisResult-sig.csv.html','popup','width=800,height=700');return false;">Analysis Result</button>
+				</div>
+				<div class="column">				
+				<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('View/output-GroupA_vs_GroupB_DE-AnalysisResult-sig-upregulated.csv.html','popup','width=800,height=700');return false;">Upregulated Genes - Analysis Result</button>
+				</div>
+				<div class="column">
+				<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('View/output-GroupA_vs_GroupB_DE-AnalysisResult-sig-downregulated.csv.html','popup','width=800,height=700');return false;">Downregulated Genes - Analysis Result</button>
+				</div>
+				</div>
+				
+				<p> The Between Sample Distribution, p-value distribution and Sample-to-Sample distance heatmap files are shown below. To view the PDF of the files, please click the respective buttons below.</p>
+				<div class="row">
+					<div class="column">
+				<p class="center"><img class ="imgsize" src="Images/output-GroupA_vs_GroupB_DE-BetweenSampleDis.png" alt="GroupA_vs_GroupB-BetweenSampleDis"></p>
+				<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/output-BetweenSampleDis.pdf','popup','width=800,height=700');return false;">Between Sample distribution</button></p>
+				</div>
+				<div class="column">
+				<p class="center"><img class ="imgsize" src="Images/output-GroupA_vs_GroupB_DE-pval.png" alt="GroupA_vs_GroupB-pval"></p>
+				<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/output-pval.pdf','popup','width=800,height=700');return false;">P-value distribution</button></p>
+				</div>
+				<div class="column">
+				
+				<p class="center"><img class ="imgsize" src="Images/output-GroupA_vs_GroupB_DE-heatmap.png" alt="GroupA_vs_GroupB-heatmap"></p>
+				<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/output-heatmap.pdf','popup','width=800,height=700');return false;">Sample-to-Sample Heatmap</button></p>
+				</div>
+				</div>
+				
+				
+				<p>The Sample-to-Sample distance heatmap on the gene-level, PCA plot and Volcano Plot are presented below. To view the PDF of the files, please click the repective button below. </p>
+				<div class="row">
+					<div class="column">
+				<p class="center"><img class ="imgsize" src="Images/output-GroupA_vs_GroupB_DE-heatmap-gene.png" alt="GroupA_vs_GroupB-heatmap-gene"></p>
+				<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/output-heatmap-gene.pdf','popup','width=800,height=700');return false;">Sample-to-Sample Gene Level Heatmap</button></p>
+				</div>
+				<div class="column">
+				
+				<p class="center"><p class="center"><img class ="imgsize" src="Images/output-GroupA_vs_GroupB_DE-PCA.png" alt="GroupA_vs_GroupB-PCA"></p>
+				<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/output-PCA.pdf','popup','width=800,height=700');return false;">PCA Plot</button></p>
+				</div>
+				<div class="column">
+				
+				<p class="center"><img class ="imgsize" src="Images/output-GroupA_vs_GroupB_DE_VolcanoPlot.png" alt="GroupA_vs_GroupB_VolcanoPlot"></p>
+				<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/output-DE_VolcanoPlot.pdf','popup','width=800,height=700');return false;">Volcano Plot</button></p>
+				
+				</div>
+				</div>
+				<p>The MA-plot is presented below. To view the PDF of the file, Please click the button below. </p>
+				<p class="center"><img class ="imgsize" src="Images/output-GroupA_vs_GroupB_DE_MAplot.png" alt="GroupA_vs_GroupB_MAplot"></p>
+				<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/output-MAplot.pdf','popup','width=800,height=700');return false;">MA-Plot</button></p>
+				
+				<p>To view the results from DE-Seq2 software as such, please click the button blow.</p>
+				<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE','popup','width=800,height=700');return false;">Differential Analysis Results</button>
+				
+				
+		</div>
+</div>
+<!--DE Analysis section ends here--><!--GO Analysis Section starts here--> 
+
+	<div id="FunctionalAnalysis" class="main">
+		<h2>9 Functional Analysis</h2>
+			<p>The functional analysis helps to understand the functions and utilities of the biological systems. Genes that are differentially expressed are further subject to functional analysis. Functional Analysis was done using the ClusterProfiler package in R. To know more about ClusterProfiler, please refer to reference 7 in the References section.The analysis performed include:</p>
+			<p> 1. Gene Ontology(GO) classification - Genes that are differentially expressed are classified based on the gene ontology classification system. The classification bar charts display the GO terms the differentially expressed genes belong to. Number on x-axis is the amount of differentially expressed gene belonging to each GO term.</p>
+			<p> 2. Gene Ontology(GO) biological process enrichments</p>
+			<p> 3. Gene Ontology(GO) molecular function enrichments</p>
+			<p> 4. Gene Ontology(GO) cellular components enrichments</p>
+			<p> 5. Pathway enrichment analysis</p>
+			<p>  The figures of all the above analysis is presented below for each of the groups.</p>
+	</div>
+			<div id=GO_1 class="main">
+		<h3>9.1 GroupA_vs_GroupB GO Analysis</h3>
+			
+			<p> The Gene Ontology analysis of genes is available by clicking the button below. The folder contains the Bar plots of Biological process, Cellular Component and Molecular Function. It also has the Gene Ontology Enrichment classification as well as KEGG Pathway classification.</p>
+			
+			<div class="row">
+			<div class="column">
+			<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/GO-ALL','popup','width=800,height=700');return false;">GO - All Genes </button></p>
+			</div>
+		
+			<div class="column">
+			<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/GO-UP','popup','width=800,height=700');return false;">GO - Upregulated Genes </button></p>
+			</div>
+			
+			<div class="column">
+			<p class="center"><button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('06.DE-GO-KEGG/GroupA_vs_GroupB_DE/GO-DOWN','popup','width=800,height=700');return false;">GO - Downregulated Genes </button></p>
+		</div>
+		</div>
+		</div>
+	
+<!--GO Analysis of section ends here-->  
+
+<!--Customized section ends here-->  
+	<div id="Custom" class="main">
+		<h2>10 Customized Analysis - Splicing</h2>
+			<p> RNA splicing is a process that removes the intervening, non-coding sequences of genes (introns) from pre-mRNA and joins the protein-coding sequences (exons) together in order to enable translation of mRNA into a protein.</p>
+			<p><a href="http://rnaseq-mats.sourceforge.net/index.html" target="popup"  onclick="window.open('http://rnaseq-mats.sourceforge.net/index.html','popup','width=1000,height=800'); return false;">rMATS</a>, Multivariate Analysis of Transcript Splicing (version 4.0.2) was used to detect alternative splicing events. The output consists of Alternative Splicing events derived from GTF and RNA. The events include Skipped Exon(SE), Alterinative 5' Splice Site(A5SS), Alterinative 3' Splice Site(A3SS), Mutually Exclusive exons(MXE) and Retained intron(RI). To know more on MATS, please refer to reference 8 in the References Section.</p>
+			<p> The results are available by clicking the button below.</p>
+			<p> The output of all possible alternative splicing events is available for each of the events below.</p>
+			<p> Click the button below to see the output of evaluation splicing with only reads that span splicing junctions.</p>&nbsp;
+			<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('07.Customized/splicing/AS_Event.MATS.JC','popup','width=800,height=700');return false;">Splicing Junctions</button><br></br>
+			<p> Click the button below to see the output of splicing with reads that span splicing junctions and reads on target. </p> &nbsp;
+			<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('07.Customized/splicing/AS_Event.MATS.JCEC','popup','width=800,height=700');return false;">Splicing Junctions and reads on target</button><br></br>
+			<p> Click the button below to see the output of all possible alternative splicing events derived from GTF and RNA.</p>&nbsp;
+			<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('07.Customized/splicing/fromGTF.AS_Event','popup','width=800,height=700');return false;">Alternative Splicing Events</button><br></br>
+			<p> Click the button below to see the output of evaluation splicing with only reads that span splicing junctions from raw input.</p> &nbsp;
+			<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('07.Customized/splicing/JC.raw.input.AS_Event','popup','width=800,height=700');return false;">Splicing Junctions - Raw Input</button><br></br>
+			<p> Click the button below to see the output of splicing with reads that span splicing junctions and reads on target from raw input. </p> &nbsp;
+			<button class="btn btn-default dropdown-toggle" target="popup" type="button" onClick= "window.open('07.Customized/splicing/JCEC.raw.input.AS_Event','popup','width=800,height=700');return false;">Splicing Junctions and reads on target - Raw input</button><br></br>
+
+			</div>
+<!--Customized Section starts here--><!--References starts here-->
+	<div id="References" class="main">
+		<h2>11 References</h2>
+		<p>Please see the list below for the refernces.</p>
+		<p>1. <a href ="https://academic.oup.com/bioinformatics/article/29/1/15/272537", target="popup"  onclick="window.open('https://academic.oup.com/bioinformatics/article/29/1/15/272537','popup','width=1000,height=800'); return false;">Alexander Dobin, Carrie A. Davis, Felix Schlesinger, Jorg Drenkow, Chris Zaleski, Sonali Jha, Philippe Batut, Mark Chaisson, Thomas R. Gingeras, STAR: ultrafast universal RNA-seq aligner, Bioinformatics, Volume 29, Issue 1, January 2013, Pages 15-21</a></p>
+		<p>2. <a href ="https://www.nature.com/articles/nbt.3122", target="popup"  onclick="window.open('https://www.nature.com/articles/nbt.3122','popup','width=1000,height=800'); return false;">Pertea, M., Pertea, G., Antonescu, C. et al. StringTie enables improved reconstruction of a transcriptome from RNA-seq reads. Nat Biotechnol 33, 290-295 (2015).</a></p>
+		<p>3. <a href ="https://link.springer.com/protocol/10.1007%2F978-1-62703-059-5_22", target="popup"  onclick="window.open('https://link.springer.com/protocol/10.1007%2F978-1-62703-059-5_22','popup','width=1000,height=800'); return false;">Lever, J., Krzywinski, M. & Altman, N. Principal component analysis. Nat Methods 14, 641-642 (2017).Principal component analysis</a></p>
+		<p>4. <a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8", target="popup"  onclick="window.open('https://genomebiology.biomedcentral.com/articles/10.1186/s13059-014-0550-8','popup','width=1000,height=800'); return false;">Love, M.I., Huber, W. & Anders, S. Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome Biol 15, 550 (2014).</a></p>
+		<p>5. <a href="https://academic.oup.com/bioinformatics/article/30/7/923/232889", target="popup"  onclick="window.open('https://academic.oup.com/bioinformatics/article/30/7/923/232889','popup','width=1000,height=800'); return false;">Yang Liao, Gordon K. Smyth, Wei Shi, featureCounts: an efficient general purpose program for assigning sequence reads to genomic features, Bioinformatics, Volume 30, Issue 7, 1 April 2014, Pages 923-930.</a></p>
+		<p>6. <a href="https://www.nature.com/articles/s41598-018-28948-z", target="popup"  onclick="window.open('https://www.nature.com/articles/s41598-018-28948-z','popup','width=1000,height=800'); return false;">Klopfenstein, D.V., Zhang, L., Pedersen, B.S. et al. GOATOOLS: A Python library for Gene Ontology analyses. Sci Rep 8, 10872 (2018).</a></p>
+		<p> 7. <a href ="https://doi.org/10.1089/omi.2011.0118", target="popup"  onclick="window.open('https://doi.org/10.1089/omi.2011.0118','popup','width=1000,height=800'); return false;">Yu, G., Wang, L. G., Han, Y., & He, Q. Y. (2012). clusterProfiler: an R package for comparing biological themes among gene clusters. Omics : a journal of integrative biology, 16(5), 284-287. </a></p>
+		<p> 8. <a href="https://www.pnas.org/content/111/51/E5593", target="popup"  onclick="window.open('https://www.pnas.org/content/111/51/E5593','popup','width=1000,height=800'); return false;"> Shen S., Park JW., Lu ZX., Lin L., Henry MD., Wu YN., Zhou Q., Xing Y. rMATS: Robust and Flexible Detection of Differential Alternative Splicing from Replicate RNA-Seq Data. PNAS, 111(51):E5593-601</a></p>
+		<p> 9. <a href="https://doi.org/10.1093/nar/gky1131", target="popup"  onclick="window.open('https://doi.org/10.1093/nar/gky1131','popup','width=1000,height=800'); return false;"> Szklarczyk, D., Gable, A. L., Lyon, D., Junge, A., Wyder, S., Huerta-Cepas, J., Simonovic, M., Doncheva, N. T., Morris, J. H., Bork, P., Jensen, L. J., & Mering, C. V. (2019). STRING v11: protein-protein association networks with increased coverage, supporting functional discovery in genome-wide experimental datasets. Nucleic acids research, 47(D1), D607-D613.</a></p>
+
+</div>
+<!--References ends here-->
+
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+
+/*Function for dropdown buttons*/
+$(document).ready(function(){
+	$('.dropdown-submenu a.test').on("click", function(e){
+	$(this).next('ul').toggle();
+	e.stopPropagation();
+    e.preventDefault();
+	});
+});
+
+ 	// Call a function every 10000 milliseconds (OR 10 seconds).
+
+    // Refresh or reload page.
+    function refresh() {
+        window .location.reload();
+    }
+
+
+</script>
+
+</body>
+</html>
